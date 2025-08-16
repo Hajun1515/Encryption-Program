@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ name_program }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ name_program }}</h1>
+
+    <div class="container">
+        <div class="form-box">
+            <form method="POST">
+                <label for="teks">Enter Encrypted Text:</label><br>
+                <input type="text" id="teks" name="teks" value="{{ chiper_text }}" required>
+                <br><br>
+                <input type="submit" value="Decrypt">
+            </form>
+        </div>
+    </div>
+
+    <div class="results">
+        {% if plain_text %}
+            <h2>Decryption results:</h2>
+            <p><strong>Encrypted text:</strong> {{ chiper_text }}</p>
+            <p><strong>Decrypted text:</strong> {{ plain_text }}</p>
+        {% endif %}
+    </div>
+
+    <br>
+    <a href="/">Back to homepage</a>
+</body>
+</html>

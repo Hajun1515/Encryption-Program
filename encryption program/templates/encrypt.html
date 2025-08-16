@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ name_program }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>{{ name_program }}</h1>
+<div class="container">
+    <div class="form-box">
+        <form method="POST">
+            <label for="teks">Enter Text:</label><br>
+            <input type="text" id="teks" name="teks" required>
+            <br><br>
+            <input type="submit" value="Encrypt">
+        </form>
+    </div>
+</div>
+
+<div class="results">
+    
+    {% if chiper_text %}
+        <h2>Encryption results:</h2>
+        <p><strong>Original text:</strong> {{ plain_text }}</p>
+        <p><strong>Encrypt:</strong> {{ chiper_text }}</p>
+
+
+        <form action="/decrypt" method="POST" style="margin-top: 10px;">
+            <input type="hidden" name="teks" value="{{ chiper_text }}">
+            <input type="submit" value="Decrypt Text">
+        </form>
+
+
+    </form>
+
+    {% endif %}
+
+</div>
+
+
+    <br>
+    <a href="/">Back to homepage</a>
+</body>
+</html>
