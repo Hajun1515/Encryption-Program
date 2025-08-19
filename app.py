@@ -12,7 +12,7 @@ def home_page():
     return render_template('index.html')
 
 # ---------------- ENKRIPSI ----------------
-@app.route("/encrypt", methods=["GET", "POST"])
+@app.route("/enkrip", methods=["GET", "POST"])
 def encrypt():
     name_program = 'Encrypt Program'
     chiper_text = ''
@@ -41,7 +41,7 @@ def encrypt():
                 chiper_text += letter  # biarkan karakter yg tidak ada di chars
 
     return render_template(
-        "encrypt.html",
+        "enkrip.html",
         name_program=name_program,
         plain_text=plain_text,
         chiper_text=chiper_text
