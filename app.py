@@ -2,17 +2,17 @@ from flask import Flask, render_template, request, session
 import string
 import random
 import secrets
-
+import os
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)  # untuk session
+app.secret_key = os.environ.get("SECRET_KEY", secrets.token_hex(16)) # untuk session
 
 # ---------------- Halaman Utama ----------------
 @app.route("/")
 def home_page():
-    return render_template('index.html')
+    return render_template("index.html")
 
 # ---------------- ENKRIPSI ----------------
-@app.route("/enkrip", methods=["GET", "POST"])
+@app.route("/enkripsi", methods=["GET", "POST"])
 def encrypt():
     name_program = 'Encrypt Program'
     chiper_text = ''
@@ -41,7 +41,7 @@ def encrypt():
                 chiper_text += letter  # biarkan karakter yg tidak ada di chars
 
     return render_template(
-        "enkrip.html",
+        "encrypt.html",
         name_program=name_program,
         plain_text=plain_text,
         chiper_text=chiper_text
